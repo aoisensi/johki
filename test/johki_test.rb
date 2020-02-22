@@ -7,7 +7,7 @@ class JohkiTest < Minitest::Test
   end
 
   def test_steam_api_key_env_is_set
-    assert ENV["STEAM_API_KEY"] != ""
+    assert !ENV["STEAM_API_KEY"].empty?
   end
 
   def test_that_it_has_a_version_number
@@ -20,7 +20,10 @@ class JohkiTest < Minitest::Test
   end
 
   def test_dota2_match_get_match_details
-    match = @client.dota2_match.get_match_details(match_id: 1697818230) # It's a disastah!
-    assert_equal  match[:result][:players][2][:account_id], 87276347
+    match_id = 1697818230 # It's a disastah!
+    match = @client.dota2_match.get_match_details(match_id: match_id, include_persona_names: 1)
+    player = match[:result][:players][2]
+    assert_equal  player[:account_id], 87276347
+    assert !player[:persona].empty?
   end
 end
