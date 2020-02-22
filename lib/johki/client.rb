@@ -2,6 +2,7 @@ require "net/http"
 require "uri"
 require "json"
 
+require "johki/dota2_match"
 require "johki/steam_user"
 require "johki/error"
 
@@ -25,11 +26,15 @@ module Johki
       if result.code != "200"
         raise JohkiError.new(result.body)
       end
-      JSON.parse(result.body, symbolize_names: true)[:response]
+      JSON.parse(result.body, symbolize_names: true)
     end
 
     def steam_user
       ISteamUser.new(self)
+    end
+
+    def dota2_match(appid = 570)
+      IDOTA2Match.new(self, appid)
     end
   end
 end
