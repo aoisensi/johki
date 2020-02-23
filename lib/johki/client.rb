@@ -3,6 +3,7 @@ require "uri"
 require "json"
 
 require "johki/dota2_match"
+require "johki/econ_dota2"
 require "johki/steam_user"
 require "johki/error"
 
@@ -29,12 +30,16 @@ module Johki
       JSON.parse(result.body, symbolize_names: true)
     end
 
-    def steam_user
-      ISteamUser.new(self)
-    end
-
     def dota2_match(appid = 570)
       IDOTA2Match.new(self, appid)
+    end
+
+    def econ_dota2(appid = 570)
+      IEconDota2.new(self, appid)
+    end
+
+    def steam_user
+      ISteamUser.new(self)
     end
   end
 end
