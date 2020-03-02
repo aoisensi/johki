@@ -36,4 +36,9 @@ class JohkiTest < Minitest::Test
     heroes = @client.econ_dota2.get_heroes(language: "en")
     assert_equal heroes[:result][:heroes][0][:localized_name], "Anti-Mage"
   end
+
+  def test_steam_id_to_account_id
+    id = Johki.steam_id_to_account_id(@aoisensi)
+    assert_equal id, 89473353
+  end
 end
