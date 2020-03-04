@@ -41,4 +41,9 @@ class JohkiTest < Minitest::Test
     id = Johki.steam_id_to_account_id(@aoisensi)
     assert_equal id, 89473353
   end
+
+  def test_dota2_match_get_match_history
+    result = @client.dota2_match.get_match_history()[:result]
+    assert_equal result[:total_results], 500
+  end
 end

@@ -7,17 +7,17 @@ module Johki
       super(client, "IDOTA2Match_#{appid}")
     end
 
-    def get_match_details(params)
+    def get_match_details(params={})
       path = path("GetMatchDetails/v1")
       @client.get(path, params)
     end
 
-    def get_match_history(params)
+    def get_match_history(params={})
       path = path("GetMatchHistory/v1")
       @client.get(path, params)
     end
 
-    def get_match_history_by_sequence_num(params)
+    def get_match_history_by_sequence_num(params={})
       path = path("GetMatchHistoryBySequenceNum")
       @client.get(path, params)
     end
