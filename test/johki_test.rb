@@ -46,4 +46,9 @@ class JohkiTest < Minitest::Test
     result = @client.dota2_match.get_match_history()[:result]
     assert_equal result[:total_results], 500
   end
+
+  def test_dota2_match_get_match_history_by_sequence_num
+    result = @client.dota2_match.get_match_history_by_sequence_num()[:result]
+    assert_equal result[:matches].first[:match_id], 496
+  end
 end

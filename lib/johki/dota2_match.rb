@@ -18,7 +18,7 @@ module Johki
     end
 
     def get_match_history_by_sequence_num(params={})
-      path = path("GetMatchHistoryBySequenceNum")
+      path = path("GetMatchHistoryBySequenceNum/v1")
       @client.get(path, params)
     end
   end
